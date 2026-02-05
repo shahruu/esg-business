@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   STIF Business Portal Design System
+   Clean • Professional • ESG Platform
+================================ */
+
+@layer base {
+  :root {
+    /* Core surfaces */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Brand — Professional Blue */
+    --primary: 212 72% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft surfaces */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 212 72% 33%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 45%;
+
+    /* ESG Accent — Forest Green */
+    --accent: 152 52% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 152 52% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI lines */
+    --border: 214 18% 88%;
+    --input: 214 18% 88%;
+    --ring: 212 72% 33%;
+
+    --radius: 0.6rem;
+
+    /* Header */
+    --header-bg: 212 72% 30%;
+    --header-foreground: 0 0% 100%;
+
+    /* Panel accents */
+    --panel-border-left: 212 72% 33%;
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 13%;
+    --card-foreground: 210 20% 98%;
+
+    --primary: 212 72% 50%;
+    --secondary: 215 25% 18%;
+    --muted: 215 25% 18%;
+
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+
+    --header-bg: 215 25% 8%;
+  }
+}
+
+/* ===============================
+   Base Typography + Smoothness
+================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  h1 { @apply text-2xl font-semibold tracking-tight; }
+  h2 { @apply text-xl font-semibold tracking-tight; }
+  h3 { @apply text-lg font-semibold tracking-tight; }
+}
+
+/* ===============================
+   Components — Polished
+================================ */
+
+@layer components {
+
+  /* Header — smooth SaaS bar */
+  .stif-header {
+    @apply bg-[hsl(var(--header-bg))]
+           text-[hsl(var(--header-foreground))]
+           border-b border-white/10
+           backdrop-blur
+           shadow-sm;
+  }
+
+  /* Framework / Panel cards */
+  .panel-card {
+    @apply bg-card
+           border border-border
+           rounded-xl
+           shadow-sm
+           hover:shadow-md
+           hover:-translate-y-0.5
+           transition-all duration-200
+           border-l-4
+           border-l-[hsl(var(--panel-border-left))];
+  }
+
+  /* Row blocks */
+  .indicator-row {
+    @apply bg-card
+           border border-border
+           rounded-lg
+           px-4 py-3
+           hover:bg-muted/40
+           transition;
+  }
+
+  /* Badges — impact */
+  .impact-badge {
+    @apply inline-flex items-center
+           px-2.5 py-0.5
+           rounded-md
+           text-xs font-medium
+           bg-amber-100
+           text-amber-700;
+  }
+
+  /* Points */
+  .points-badge {
+    @apply inline-flex items-center
+           px-2.5 py-0.5
+           rounded-md
+           text-xs font-semibold
+           bg-emerald-100
+           text-emerald-700;
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center
+           px-2.5 py-1
+           rounded-md
+           text-xs font-medium;
+  }
+
+  .status-badge-not-started {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .status-badge-in-progress {
+    @apply bg-blue-100 text-blue-700;
+  }
+
+  .status-badge-completed {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  /* Tabs polish */
+  .stif-tab {
+    @apply px-4 py-2
+           rounded-md
+           text-sm font-medium
+           transition
+           hover:bg-muted;
+  }
+
+  /* Button polish */
+  .stif-button-primary {
+    @apply bg-primary text-primary-foreground
+           shadow-sm
+           hover:opacity-95
+           hover:shadow-md
+           transition;
+  }
+}
