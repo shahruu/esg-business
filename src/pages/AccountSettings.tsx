@@ -53,6 +53,12 @@ const ESG_FOCUS_OPTIONS = [
   "Diversity & Inclusion",
 ];
 
+/* ✅ Reporting years 2005–2027 */
+const REPORTING_YEAR_OPTIONS = Array.from(
+  { length: 2027 - 2005 + 1 },
+  (_, i) => String(2005 + i)
+);
+
 /* ================= COMPONENT ================= */
 
 export default function AccountSettings() {
@@ -73,6 +79,7 @@ export default function AccountSettings() {
     address: "",
     esgFocus: "",
     esgInitiatives: "",
+    reportingYear: "",
   });
 
   const setField = (key: string, value: string) =>
@@ -140,6 +147,21 @@ export default function AccountSettings() {
                 <SelectContent>
                   {INDUSTRY_OPTIONS.map(opt => (
                     <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* ✅ Reporting Year field added */}
+            <div>
+              <Label>Reporting Year</Label>
+              <Select onValueChange={v => setField("reportingYear", v)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select reporting year" />
+                </SelectTrigger>
+                <SelectContent>
+                  {REPORTING_YEAR_OPTIONS.map(year => (
+                    <SelectItem key={year} value={year}>{year}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>

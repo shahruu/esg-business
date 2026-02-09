@@ -24,7 +24,8 @@ export default function SustainabilityReporting() {
     }
   };
 
-  // ✅ NEW DESIGN CARD
+  /* ================= CARD ================= */
+
   const renderPanelCard = (panel: Panel) => (
     <Card
       key={panel.id}
@@ -34,6 +35,7 @@ export default function SustainabilityReporting() {
 
         <div className="space-y-3">
 
+          {/* title + desc */}
           <div className="flex items-start gap-3">
             <div className="text-2xl">{panel.icon}</div>
 
@@ -48,6 +50,7 @@ export default function SustainabilityReporting() {
             </div>
           </div>
 
+          {/* impact */}
           <span className={`
             inline-block text-xs font-medium px-2 py-1 rounded-md
             ${panel.impact === "High"
@@ -59,39 +62,42 @@ export default function SustainabilityReporting() {
             {panel.impact}
           </span>
 
-          <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-            <span>Estimated time</span>
-            <span>{panel.estimatedTime}</span>
-          </div>
-
-          <div className="flex items-center justify-between text-xs pt-2">
-            <span className="bg-gray-100 px-2 py-1 rounded-md text-gray-600">
+          {/* status only — client wanted simpler */}
+          <div className="pt-2">
+            <span className="bg-gray-100 px-2 py-1 rounded-md text-xs text-gray-600">
               {panel.status}
-            </span>
-
-            <span className="text-emerald-600 font-medium">
-              +{panel.points} points
             </span>
           </div>
 
         </div>
 
+        {/* button */}
         <Button
           className="w-full mt-5 rounded-xl font-medium"
           onClick={() =>
             navigate(`/sustainability-reporting/${framework.id}/${panel.id}`)
           }
         >
-          REVIEW FRAMEWORK
+          Review Panel
         </Button>
 
       </CardContent>
     </Card>
   );
 
-  const environmentalPanels = framework.panels.filter(p => p.category === "Environmental");
-  const socialPanels = framework.panels.filter(p => p.category === "Social");
-  const governancePanels = framework.panels.filter(p => p.category === "Governance");
+  const environmentalPanels = framework.panels.filter(
+    p => p.category === "Environmental"
+  );
+
+  const socialPanels = framework.panels.filter(
+    p => p.category === "Social"
+  );
+
+  const governancePanels = framework.panels.filter(
+    p => p.category === "Governance"
+  );
+
+  /* ================= PAGE ================= */
 
   return (
     <PageLayout>
@@ -104,8 +110,9 @@ export default function SustainabilityReporting() {
           ]}
         />
 
-        {/* Header */}
+        {/* header */}
         <div className="flex items-center justify-between">
+
           <div>
             <h1 className="text-2xl font-bold">
               Framework Overview
@@ -120,14 +127,17 @@ export default function SustainabilityReporting() {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Button>
+
         </div>
 
-        {/* Framework Info Card */}
+        {/* framework info */}
         <Card>
           <CardContent className="p-4">
+
             <div className="flex items-center justify-between">
 
               <div className="flex items-center gap-3">
+
                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">
                     {framework.code}
@@ -143,15 +153,17 @@ export default function SustainabilityReporting() {
                     {framework.description}
                   </p>
                 </div>
+
               </div>
 
               <ChevronRight className="h-5 w-5 text-muted-foreground" />
 
             </div>
+
           </CardContent>
         </Card>
 
-        {/* Framework Switch Buttons */}
+        {/* framework switch */}
         <div className="flex gap-3">
           {frameworks.map((f, i) => (
             <Button
@@ -166,7 +178,7 @@ export default function SustainabilityReporting() {
           ))}
         </div>
 
-        {/* All Panels — grouped by category */}
+        {/* grouped panels */}
         {[
           { name: "Environmental", data: environmentalPanels },
           { name: "Social", data: socialPanels },
